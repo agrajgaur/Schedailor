@@ -8,6 +8,8 @@
 
         # What we can fetch from user related to his schedule, what he does in a day?
 
+        # Is he a day scholar or hosteller?
+
         # When does he wake up?
             # Is it consistent?
             # or if not then the schedule should be made according to when he wakes up
@@ -16,18 +18,29 @@
 
         # What's his organisation's schedule (Work or Classes duration)?
 
+        # Unpredictable changes in organisation's schedule.
+
+        # Extra time spend for events organised by organisation depending on its priority to attend.
+
         # How much time does he spends in breakfast,lunch,dinner or possibly any other time when he's eating ?
 
         # How long and how frequent breaks he takes while doing work?
+
+        # When does he usually sleeps?
 
 # Scope : Mainly college students along with corporate sector
 
 # Proposed Solution and Approach:
 
-    # Converting subjective inputs into a schedule
+    # Converting subjective inputs into a schedule.
 
+# Priority Levels and Toughness of task criteria Implementation
 
+# When does he prefer to study and assigning tasks of low priority level at other time of the day.
 
+# Toughness of task criteria asks an input of whether user prefers to move from easy to difficult task or vice versa or performing task of a favourite subject is preferred more or the least one
+
+# Priority levels of deadlines 
 
 
 
