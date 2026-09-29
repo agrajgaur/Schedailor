@@ -42,5 +42,27 @@
 
 # Priority levels of deadlines 
 
+list_tasks = []
 
+while True :
+    store_tasks = input('Tasks : Duration to complete the task : Toughness level of the task(1-10) : Priority level of the task(1-10)')
+    split_tasks = store_tasks.split(':')
+    list_tasks.append(split_tasks)
+    if store_tasks=='end':
+        break
 
+list_tasks.pop()
+print(list_tasks)
+
+# To - dos
+
+    # Sh : Assigning values to dictionaries and sorting tasks according to priority level {Tasks : [D,T,P]}
+
+    # Pr : Confining inputs by using conditions and printing invalid input if invalid request recieved
+
+    # Ag: Providing user with values associated with the respective tasks at the end of the loop and when asked 
+        # along with returning the values(D:T:P) of inputted task by the user
+
+    # To implement after above tasks are completed:
+
+        # Strikethrough font on completed tasks when asked by the user to display status of tasks
