@@ -66,3 +66,19 @@ print(list_tasks)
     # To implement after above tasks are completed:
 
         # Strikethrough font on completed tasks when asked by the user to display status of tasks
+
+#Sh:
+
+sorted_list=[]
+while list_tasks:
+    maxx=list_tasks[0]
+    for task in list_tasks:
+        if int(task[3])>int(maxx[3]):
+            maxx=task
+    sorted_list.append(maxx)
+    list_tasks.remove(maxx)
+tasks_dictionary={}
+for key in sorted_list:
+    tasks_dictionary[key[0]]=key[1:]
+print(tasks_dictionary)
+        
