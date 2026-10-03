@@ -42,43 +42,111 @@
 
 # Priority levels of deadlines 
 
+# --------------------------------------------------------------------------------------------------------------------------------- #
+
+# Ag: Initialised before , added condition for making sure the inputted format matches the asked format
+
 list_tasks = []
 
 while True :
-    store_tasks = input('Tasks : Duration to complete the task : Toughness level of the task(1-10) : Priority level of the task(1-10)')
+    store_tasks = input('Task : Duration(in hrs) to complete the task : Toughness level of the task(1-10) : Priority level of the task(1-10) ')
     split_tasks = store_tasks.split(':')
-    list_tasks.append(split_tasks)
+
     if store_tasks=='end':
         break
+    
+    if len(split_tasks) != 4:
+        print("Error: Invalid input format. Please write in required format(e.g., Study:2:8:10)")
+        continue                   # Skips code below it for invalid input , and restarts the loop
 
-list_tasks.pop()
-print(list_tasks)
+    list_tasks.append(split_tasks)
 
-# To - dos
+# --------------------------------------------------------------------------------------------------------------------------------- #
 
-    # Sh : Assigning values to dictionaries and sorting tasks according to priority level {Tasks : [D,T,P]}
+    # Ag : Formatting ; Ag,Sh,Pr : Brainstorming
 
-    # Pr : Confining inputs by using conditions and printing invalid input if invalid request recieved
+        # To - do's - 1 (Storing,Filtering,Retrieval):
 
-    # Ag: Providing user with values associated with the respective tasks at the end of the loop and when asked 
-        # along with returning the values(D:T:P) of inputted task by the user
+            # Sh : Assigning values to dictionaries and sorting tasks according to priority level {Tasks : [D,T,P]}
 
-    # To implement after above tasks are completed:
+            # Pr : Confining inputs by using conditions and printing invalid input if invalid request recieved
 
-        # Strikethrough font on completed tasks when asked by the user to display status of tasks
+            # Ag : Providing user with values associated with the respective tasks at the end of the loop and when asked 
+                # along with returning the values(D:T:P) of inputted task by the user
 
-#Sh:
+            # To implement after above tasks are completed:
 
-sorted_list=[]
+                # Strikethrough font on completed tasks when asked by the user to display status of tasks
+
+# --------------------------------------------------------------------------------------------------------------------------------- #
+
+#Sh ; ( Ag : Polished ):
+
+sorted_tasks=[]
 while list_tasks:
-    maxx=list_tasks[0]
+    first_task = list_tasks[0]
     for task in list_tasks:
-        if int(task[3])>int(maxx[3]):
-            maxx=task
-    sorted_list.append(maxx)
-    list_tasks.remove(maxx)
-tasks_dictionary={}
-for key in sorted_list:
-    tasks_dictionary[key[0]]=key[1:]
-print(tasks_dictionary)
-        
+        if int(task[3])>int(first_task[3]):         # Priority of task at index 3 of each task nested list
+            first_task=task
+    sorted_tasks.append(first_task)
+    list_tasks.remove(first_task)
+
+new_tasks_dict = {}
+
+for task_as_key in sorted_tasks:
+    new_tasks_dict[task_as_key[0]]=task_as_key[1:]
+
+print(new_tasks_dict)
+
+# --------------------------------------------------------------------------------------------------------------------------------- #
+
+# Ag: 
+
+while True:
+    y_n = input('Do you want to retrieve inputted information associated with a task inputted earlier ? (Yes/No) ')
+    if y_n.lower() == 'yes':
+        retrieval_of_task = input('Enter the task ')
+        if retrieval_of_task in new_tasks_dict:
+            print(new_tasks_dict[retrieval_of_task])
+    else:
+        break
+
+# --------------------------------------------------------------------------------------------------------------------------------- #
+
+    # Ag : Formatting ; Ag,Sh,Pr,Bh : Brainstorming
+
+        # To - do's - 2 (Polishing Output,Completion and Deleltion of tasks):
+
+            # Polishing of output -> Current output    --> {'eating': ['5', '3', '8'], 'sleeping': ['7', '1', '3']}
+
+            #                        Output to achieve --> 'eating'   --> [' 5 hours ',' Toughness - 3 ',' Priority - 8 '] 
+            #                                              'sleeping' --> [' 7 hours ',' Toughness - 1 ',' Priority - 3 '] 
+
+            # Implementation of completion of a task -->
+
+                # Transferring the tasks that are completed into a diffrent dictionary consisting of completed tasks
+
+                # Conditions required to delete a task forever directly or delete the tasks from the completed tasks dictionary
+
+                # A bigger while loop encapsuling the other smaller while loop code blocks inside of which a input would be asked,
+                # for the user whether if he wants to add task,delete tasks forever,check out completed tasks or retrieve tasks
+
+                # A non - interactive checkbox showing whether if a task is completed
+
+
+        # After logic & backend completion, moving on to UI implementation connected to python
+
+# --------------------------------------------------------------------------------------------------------------------------------- #
+
+
+    # Ag : Brainstorming ; Ai : Formatting
+
+        # To - do's - 3 (Implementation of file handling due to working of current loops whilst requiring a bigger while loop) -->
+
+            # Saving state (Write): Exporting the active tasks and completed tasks dictionaries into a .txt or .csv file before the program exits so data isn't lost.
+
+            # Loading state (Read): Fetching and parsing the saved file when the program launches to rebuild the dictionaries, allowing the user to pick up where they left off.
+
+            # Auto-update mechanism: Overwriting or appending to the save file dynamically whenever a user adds, completes, or deletes a task in the main menu loop.
+            
+# --------------------------------------------------------------------------------------------------------------------------------- #
