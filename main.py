@@ -55,7 +55,7 @@ while True :
     if store_tasks=='end':
         break
     
-    if len(split_tasks) != 4:
+    if len(split_tasks) != 4:                                   # dtp should be in integer 
         print("Error: Invalid input format. Please write in required format(e.g., Study:2:8:10)")
         continue                   # Skips code below it for invalid input , and restarts the loop
 
@@ -117,21 +117,27 @@ while True:
 
         # To - do's - 2 (Polishing Output,Completion and Deleltion of tasks):
 
-            # Polishing of output -> Current output    --> {'eating': ['5', '3', '8'], 'sleeping': ['7', '1', '3']}
+            # Sh : Polishing of output -> Current output    --> {'eating': ['5', '3', '8'], 'sleeping': ['7', '1', '3']}
 
-            #                        Output to achieve --> 'eating'   --> [' 5 hours ',' Toughness - 3 ',' Priority - 8 '] 
-            #                                              'sleeping' --> [' 7 hours ',' Toughness - 1 ',' Priority - 3 '] 
+            #                        Output to achieve --> 1. ☑ 'eating'   --> [' 5 hours ',' Toughness - 3 ',' Priority - 8 '] 
+            #                                              2. ◻ 'sleeping' --> [' 7 hours ',' Toughness - 1 ',' Priority - 3 '] 
 
             # Implementation of completion of a task -->
 
-                # Transferring the tasks that are completed into a diffrent dictionary consisting of completed tasks
+                # Ag: Transferring the tasks that are completed into a diffrent dictionary consisting of completed tasks(being done on a daily or weekly task)
+                #     along with having same format to be achieved whilst polishing the orignial one.
 
                 # Conditions required to delete a task forever directly or delete the tasks from the completed tasks dictionary
 
                 # A bigger while loop encapsuling the other smaller while loop code blocks inside of which a input would be asked,
                 # for the user whether if he wants to add task,delete tasks forever,check out completed tasks or retrieve tasks
 
-                # A non - interactive checkbox showing whether if a task is completed
+                # Pr : A non - interactive checkbox showing whether if a task is completed beside the task
+                #      and a task number for the convienience of marking a task as complete or incomplete by the user's input as the task number itself
+                #      when asked using another while loop
+
+            # Showing the top 5 tasks according to priority level, and if inputted to see the remaining tasks , print the next 5
+            # or if inputted to show all of them, print all of the tasks.
 
 
         # After logic & backend completion, moving on to UI implementation connected to python
