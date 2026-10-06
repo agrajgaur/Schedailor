@@ -40,7 +40,7 @@
 
 # Toughness of task criteria asks an input of whether user prefers to move from easy to difficult task or vice versa or performing task of a favourite subject is preferred more or the least one
 
-# Priority levels of deadlines 
+# Priority levels of deadlines
 
 # --------------------------------------------------------------------------------------------------------------------------------- #
 
@@ -156,3 +156,93 @@ while True:
             # Auto-update mechanism: Overwriting or appending to the save file dynamically whenever a user adds, completes, or deletes a task in the main menu loop.
             
 # --------------------------------------------------------------------------------------------------------------------------------- #
+
+
+# Pr : added a main menu which infinitely runs unless the user opts out using ctrl c / inputting q (quit)
+   #   : implemented choices for adding a task, and quitting the program. (editing tasks will be implemented later)
+   #   : added a display for the inputted tasks
+   
+
+
+tasks = []
+
+
+while True:
+    
+    print("\n TODO LIST")
+    print("▀▄" * 20)
+    
+    if not tasks:    #basically says, if tasks is empty(empty list means False/0)
+        print("No tasks yet!!! add a few below")
+    else:
+        for i, task in enumerate(tasks, 1):
+            check = '[✓]' if task[4] else '[ ]'                                                                    # this checks if the the task is assigned False or True. if True, it will mark it done/checked
+            print(f" {i}. {check} {task[0]} \n Dur:{task[1]}hrs | Toughness:{task[2]}/10 | Priority:{task[3]}/10") # task is sub-list. tasks has all the tasks, say 1-5. task will have the objects inside its list. 
+            print()
+            
+    print("\nOPTIONS:")       
+    print("[A]dd Tasks | [E]dit Tasks | [Q]uit")
+
+            
+   
+    
+    
+    choice =  input("\nchoose from the options below: ").lower().strip() 
+    if choice == "q":   # ["1" | "2" | "3"]
+        print("quitting!!")
+        break
+    
+    if choice == "a":
+     while True :
+        
+        print("please type in your task within the format given below")
+        store_tasks = input('task name? : Duration to complete task(in hrs) : Toughness? (1-10) : Priority? (1-10) (input end to stop adding tasks) \n')
+        split_tasks = store_tasks.split(':')
+        
+        
+        if store_tasks=='end':
+            break
+        
+        
+        
+        if len(split_tasks) != 4:                                   # dtp should be in integer 
+            print("Error: Invalid input format. Please write in required format(e.g., Study:2:8:10)")
+            continue      
+        
+        
+        for i in range(len(split_tasks)):
+            split_tasks[i] = split_tasks[i].strip()
+            
+        is_valid = True #this is added to account for the continue function added to each place where the the programs input fails. 
+                        # because of the outer while loop still running, the continue function will make the program still save the data from tasks.append and return unnecessary data
+        
+        
+            
+            
+        for i in range(1 , len(split_tasks)):
+            try:
+                split_tasks[i] = int(split_tasks[i])
+            except ValueError:
+                print("Please use integers as input")
+                is_valid = False
+                break # was continue
+            
+            if not (1<=split_tasks[i]<=10):
+                print("Please use ")
+                is_valid = False
+                break # was continue
+            
+        if is_valid == False:    
+            continue
+        
+        split_tasks.append(False)
+                    # Skips code below it for invalid input , and restarts the loop
+        tasks.append(split_tasks)
+        
+        print(f'task "{split_tasks[0]}" added successfully')
+        print()
+    
+
+
+
+
